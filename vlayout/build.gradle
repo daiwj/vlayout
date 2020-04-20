@@ -23,6 +23,7 @@
  */
 
 apply plugin: 'com.android.library'
+apply plugin: 'com.gejia.upaar'
 
 buildscript {
     repositories {
@@ -32,9 +33,7 @@ buildscript {
         jcenter()
     }
 
-    dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.0'
-    }
+
 }
 
 repositories {
@@ -135,4 +134,12 @@ if (deployConfig.exists()) {
 deployConfig = rootProject.file('jcenterDeploy.gradle')
 if (deployConfig.exists()) {
     apply from: rootProject.file('jcenterDeploy.gradle')
+}
+
+upinfo{
+    groupId = 'com.gejia.android' //选填 默认为此参数
+    artifactId = 'vlayout' //必填 组件名称
+    version = '1.2.36'   //必填 组件版本,同一个正式版只能上传一次，多次会报错
+    //gitRepo = 'origin' //选填
+    packaging = 'jar' //选填 默认aar 可填jar
 }
